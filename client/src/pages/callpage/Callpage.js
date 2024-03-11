@@ -18,7 +18,8 @@ import Peer from 'simple-peer';
 
 
 let peer = null;
-const socket = io.connect("http://localhost:4000");
+// const socket = io.connect("http://localhost:4000");
+const socket = io.connect("https://rds.live.techiepanda.in");
 const initialState = [];
 
 const CallPage = () => {
@@ -61,6 +62,7 @@ const CallPage = () => {
   };
 
   const initWebRTC = () => {
+    console.log(123);
     navigator.mediaDevices
       .getUserMedia({
         video: true,
@@ -140,7 +142,9 @@ const CallPage = () => {
         });
         
       })
-      .catch(() => { });
+      .catch((err) => {
+        console.log(err)
+       });
   };
 
   const sendMsg = (msg) => {

@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { BASE_URL } from '../../utils/apiEndpoints';
 
 
 export default function Feed() {
@@ -14,7 +15,7 @@ export default function Feed() {
     useEffect(() => {
         const getFriends = async () => {
           try {
-            const friendList = await axios.get("/users/friends/" + user._id);
+            const friendList = await axios.get(BASE_URL+"/api/users/friends/" + user._id);
             setFriends(friendList.data);
           } catch (err) {
             console.log(err);

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 import ProfileRightbar from "../../components/profileRightbar/ProfileRightbar";
+import { BASE_URL } from '../../utils/apiEndpoints';
 
 
 export default function Profile() {
@@ -15,7 +16,7 @@ export default function Profile() {
 
     useEffect(() => {
         const fetchUser = async () => {
-          const res = await axios.get(`/users?username=${username}`);
+          const res = await axios.get(`${BASE_URL}/api/users?username=${username}`);
           setUser(res.data);
         };
         fetchUser();
