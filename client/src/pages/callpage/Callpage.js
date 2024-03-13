@@ -16,7 +16,6 @@ import CallPageHeader from '../../components/callpageHeader/CallPageHeader';
 import CallPageFooter from '../../components/callpageFooter/CallPageFooter';
 import Peer from 'simple-peer';
 
-
 let peer = null;
 // const socket = io.connect("http://localhost:4000");
 const socket = io.connect("https://rds.live.techiepanda.in");
@@ -62,7 +61,6 @@ const CallPage = () => {
   };
 
   const initWebRTC = () => {
-    console.log(123);
     navigator.mediaDevices
       .getUserMedia({
         video: true,
@@ -127,9 +125,12 @@ const CallPage = () => {
             });
           }, 10000);
         });
+        console.log(peer);
 
         peer.on("stream", (stream) => {
+          console.log(123);
           // got remote video stream, now let's show it in a video tag
+          console.log(stream);
           let video = document.querySelector("video");
 
           if ("srcObject" in video) {
@@ -207,7 +208,7 @@ const CallPage = () => {
   return (
     <div className="callpage-container">
       <video className="video-container" src="" controls></video>
-
+        {/* <div className="video-container"></div> */}
       <CallPageHeader
         isMessenger={isMessenger}
         setIsMessenger={setIsMessenger}
